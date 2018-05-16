@@ -20,6 +20,7 @@ import com.stfalcon.chatkit.commons.ViewHolder;
 import com.stfalcon.chatkit.commons.models.IMessage;
 import com.stfalcon.chatkit.commons.models.MessageContentType;
 import com.stfalcon.chatkit.utils.DateFormatter;
+import com.stfalcon.chatkit.utils.DateFormatterKt;
 import com.stfalcon.chatkit.utils.RoundedImageView;
 
 import java.lang.reflect.Constructor;
@@ -724,7 +725,7 @@ public class MessageHolders {
             if (text != null) {
                 String formattedDate = null;
                 if (dateHeadersFormatter != null) formattedDate = dateHeadersFormatter.format(date);
-                text.setText(formattedDate == null ? DateFormatter.format(date, dateFormat) : formattedDate);
+                text.setText(formattedDate == null ? DateFormatterKt.format(date, dateFormat) : formattedDate);
             }
         }
 
@@ -760,7 +761,7 @@ public class MessageHolders {
         @Override
         public void onBind(MESSAGE message) {
             if (time != null) {
-                time.setText(DateFormatter.format(message.getCreatedAt(), DateFormatter.Template.TIME));
+                time.setText(DateFormatterKt.format(message.getCreatedAt(), DateFormatter.Template.TIME));
             }
 
             if (userAvatar != null) {
@@ -807,7 +808,7 @@ public class MessageHolders {
         @Override
         public void onBind(MESSAGE message) {
             if (time != null) {
-                time.setText(DateFormatter.format(message.getCreatedAt(), DateFormatter.Template.TIME));
+                time.setText(DateFormatterKt.format(message.getCreatedAt(), DateFormatter.Template.TIME));
             }
         }
 

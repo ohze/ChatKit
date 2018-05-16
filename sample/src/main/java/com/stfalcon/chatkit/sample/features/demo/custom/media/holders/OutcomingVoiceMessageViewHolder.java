@@ -8,6 +8,7 @@ import com.stfalcon.chatkit.sample.R;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
 import com.stfalcon.chatkit.sample.utils.FormatUtils;
 import com.stfalcon.chatkit.utils.DateFormatter;
+import com.stfalcon.chatkit.utils.DateFormatterKt;
 
 /*
  * Created by troy379 on 05.04.17.
@@ -30,6 +31,6 @@ public class OutcomingVoiceMessageViewHolder
         tvDuration.setText(
                 FormatUtils.getDurationString(
                         message.getVoice().getDuration()));
-        tvTime.setText(DateFormatter.format(message.getCreatedAt(), DateFormatter.Template.TIME));
+        tvTime.setText(DateFormatterKt.format(message.getCreatedAt(), DateFormatter.Template.TIME));
     }
 }

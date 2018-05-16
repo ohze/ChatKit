@@ -19,6 +19,8 @@ package com.stfalcon.chatkit.dialogs;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -33,6 +35,7 @@ import com.stfalcon.chatkit.commons.ViewHolder;
 import com.stfalcon.chatkit.commons.models.IDialog;
 import com.stfalcon.chatkit.commons.models.IMessage;
 import com.stfalcon.chatkit.utils.DateFormatter;
+import com.stfalcon.chatkit.utils.DateFormatterKt;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -97,7 +100,7 @@ public class DialogsListAdapter<DIALOG extends IDialog>
 
     @SuppressWarnings("unchecked")
     @Override
-    public void onBindViewHolder(BaseDialogViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseDialogViewHolder holder, int position) {
         holder.setImageLoader(imageLoader);
         holder.setOnDialogClickListener(onDialogClickListener);
         holder.setOnDialogViewClickListener(onDialogViewClickListener);
@@ -108,9 +111,9 @@ public class DialogsListAdapter<DIALOG extends IDialog>
     }
 
     @Override
-    public BaseDialogViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseDialogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(itemLayoutId, parent, false);
-        //create view holder by reflation
+        //create view holder by reflection
         try {
             Constructor<? extends BaseDialogViewHolder> constructor = holderClass.getDeclaredConstructor(View.class);
             constructor.setAccessible(true);
@@ -638,7 +641,7 @@ public class DialogsListAdapter<DIALOG extends IDialog>
         }
 
         protected String getDateString(Date date) {
-            return DateFormatter.format(date, DateFormatter.Template.TIME);
+            return DateFormatterKt.format(date, DateFormatter.Template.TIME);
         }
 
         protected DialogListStyle getDialogStyle() {

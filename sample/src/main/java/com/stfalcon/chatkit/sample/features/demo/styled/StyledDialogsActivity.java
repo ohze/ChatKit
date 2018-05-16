@@ -11,6 +11,7 @@ import com.stfalcon.chatkit.sample.common.data.fixtures.DialogsFixtures;
 import com.stfalcon.chatkit.sample.common.data.model.Dialog;
 import com.stfalcon.chatkit.sample.features.demo.DemoDialogsActivity;
 import com.stfalcon.chatkit.utils.DateFormatter;
+import com.stfalcon.chatkit.utils.DateFormatterKt;
 
 import java.util.Date;
 
@@ -39,14 +40,14 @@ public class StyledDialogsActivity extends DemoDialogsActivity
 
     @Override
     public String format(Date date) {
-        if (DateFormatter.isToday(date)) {
-            return DateFormatter.format(date, DateFormatter.Template.TIME);
-        } else if (DateFormatter.isYesterday(date)) {
+        if (DateFormatter.Companion.isToday(date)) {
+            return DateFormatterKt.format(date, DateFormatter.Template.TIME);
+        } else if (DateFormatter.Companion.isYesterday(date)) {
             return getString(R.string.date_header_yesterday);
-        } else if (DateFormatter.isCurrentYear(date)) {
-            return DateFormatter.format(date, DateFormatter.Template.STRING_DAY_MONTH);
+        } else if (DateFormatter.Companion.isCurrentYear(date)) {
+            return DateFormatterKt.format(date, DateFormatter.Template.STRING_DAY_MONTH);
         } else {
-            return DateFormatter.format(date, DateFormatter.Template.STRING_DAY_MONTH_YEAR);
+            return DateFormatterKt.format(date, DateFormatter.Template.STRING_DAY_MONTH_YEAR);
         }
     }
 

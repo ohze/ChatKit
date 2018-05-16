@@ -11,6 +11,7 @@ import com.stfalcon.chatkit.sample.R;
 import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixtures;
 import com.stfalcon.chatkit.sample.features.demo.DemoMessagesActivity;
 import com.stfalcon.chatkit.utils.DateFormatter;
+import com.stfalcon.chatkit.utils.DateFormatterKt;
 
 import java.util.Date;
 
@@ -52,12 +53,12 @@ public class StyledMessagesActivity extends DemoMessagesActivity
 
     @Override
     public String format(Date date) {
-        if (DateFormatter.isToday(date)) {
+        if (DateFormatter.Companion.isToday(date)) {
             return getString(R.string.date_header_today);
-        } else if (DateFormatter.isYesterday(date)) {
+        } else if (DateFormatter.Companion.isYesterday(date)) {
             return getString(R.string.date_header_yesterday);
         } else {
-            return DateFormatter.format(date, DateFormatter.Template.STRING_DAY_MONTH_YEAR);
+            return DateFormatterKt.format(date, DateFormatter.Template.STRING_DAY_MONTH_YEAR);
         }
     }
 
