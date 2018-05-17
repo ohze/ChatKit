@@ -11,7 +11,7 @@ import java.util.Date;
 /*
  * Created by Anton Bevza on 07.09.16.
  */
-public final class DialogsFixtures extends FixturesData {
+public final class DialogsFixtures {
     private DialogsFixtures() {
         throw new AssertionError();
     }
@@ -33,9 +33,9 @@ public final class DialogsFixtures extends FixturesData {
     private static Dialog getDialog(int i, Date lastMessageCreatedAt) {
         ArrayList<User> users = getUsers();
         return new Dialog(
-                getRandomId(),
-                users.size() > 1 ? groupChatTitles.get(users.size() - 2) : users.get(0).getName(),
-                users.size() > 1 ? groupChatImages.get(users.size() - 2) : getRandomAvatar(),
+                FixturesDataKt.getRandomId(),
+                users.size() > 1 ? FixturesDataKt.getGroupChatTitles().get(users.size() - 2) : users.get(0).getName(),
+                users.size() > 1 ? FixturesDataKt.getGroupChatImages().get(users.size() - 2) : FixturesDataKt.getRandomAvatar(),
                 users,
                 getMessage(lastMessageCreatedAt),
                 i < 3 ? 3 - i : 0);
@@ -43,7 +43,7 @@ public final class DialogsFixtures extends FixturesData {
 
     private static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<>();
-        int usersCount = 1 + rnd.nextInt(4);
+        int usersCount = 1 + FixturesDataKt.getRnd().nextInt(4);
 
         for (int i = 0; i < usersCount; i++) {
             users.add(getUser());
@@ -54,17 +54,17 @@ public final class DialogsFixtures extends FixturesData {
 
     private static User getUser() {
         return new User(
-                getRandomId(),
-                getRandomName(),
-                getRandomAvatar(),
-                getRandomBoolean());
+                FixturesDataKt.getRandomId(),
+                FixturesDataKt.getRandomName(),
+                FixturesDataKt.getRandomAvatar(),
+                FixturesDataKt.getRandomBoolean());
     }
 
     private static Message getMessage(final Date date) {
         return new Message(
-                getRandomId(),
+                FixturesDataKt.getRandomId(),
                 getUser(),
-                getRandomMessage(),
+                FixturesDataKt.getRandomMessage(),
                 date);
     }
 }

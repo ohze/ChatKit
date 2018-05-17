@@ -10,35 +10,35 @@ import java.util.Date;
 /*
  * Created by troy379 on 12.12.16.
  */
-public final class MessagesFixtures extends FixturesData {
+public final class MessagesFixtures {
     private MessagesFixtures() {
         throw new AssertionError();
     }
 
     public static Message getImageMessage() {
-        Message message = new Message(getRandomId(), getUser(), null);
-        message.setImage(new Message.Image(getRandomImage()));
+        Message message = new Message(FixturesDataKt.getRandomId(), getUser(), null);
+        message.setImage(new Message.Image(FixturesDataKt.getRandomImage()));
         return message;
     }
 
     public static Message getVoiceMessage() {
-        Message message = new Message(getRandomId(), getUser(), null);
-        message.setVoice(new Message.Voice("http://example.com", rnd.nextInt(200) + 30));
+        Message message = new Message(FixturesDataKt.getRandomId(), getUser(), null);
+        message.setVoice(new Message.Voice("http://example.com", FixturesDataKt.getRnd().nextInt(200) + 30));
         return message;
     }
 
     public static Message getTextMessage() {
-        return getTextMessage(getRandomMessage());
+        return getTextMessage(FixturesDataKt.getRandomMessage());
     }
 
     public static Message getTextMessage(String text) {
-        return new Message(getRandomId(), getUser(), text);
+        return new Message(FixturesDataKt.getRandomId(), getUser(), text);
     }
 
     public static ArrayList<Message> getMessages(Date startDate) {
         ArrayList<Message> messages = new ArrayList<>();
         for (int i = 0; i < 10/*days count*/; i++) {
-            int countPerDay = rnd.nextInt(5) + 1;
+            int countPerDay = FixturesDataKt.getRnd().nextInt(5) + 1;
 
             for (int j = 0; j < countPerDay; j++) {
                 Message message;
@@ -60,11 +60,11 @@ public final class MessagesFixtures extends FixturesData {
     }
 
     private static User getUser() {
-        boolean even = rnd.nextBoolean();
+        boolean even = FixturesDataKt.getRnd().nextBoolean();
         return new User(
                 even ? "0" : "1",
-                even ? names.get(0) : names.get(1),
-                even ? avatars.get(0) : avatars.get(1),
+                even ? FixturesDataKt.getNames().get(0) : FixturesDataKt.getNames().get(1),
+                even ? FixturesDataKt.getAvatars().get(0) : FixturesDataKt.getAvatars().get(1),
                 true);
     }
 }
