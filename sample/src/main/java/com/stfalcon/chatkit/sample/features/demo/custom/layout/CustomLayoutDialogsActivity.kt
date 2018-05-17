@@ -6,7 +6,7 @@ import android.os.Bundle
 
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter
 import com.stfalcon.chatkit.sample.R
-import com.stfalcon.chatkit.sample.common.data.fixtures.*
+import com.stfalcon.chatkit.sample.common.data.fixtures.dialogs
 import com.stfalcon.chatkit.sample.common.data.model.Dialog
 import com.stfalcon.chatkit.sample.features.demo.DemoDialogsActivity
 import kotlinx.android.synthetic.main.activity_custom_layout_dialogs.*

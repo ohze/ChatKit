@@ -10,13 +10,10 @@ import com.stfalcon.chatkit.sample.common.data.model.Dialog
 import com.stfalcon.chatkit.sample.common.data.model.Message
 import com.stfalcon.chatkit.sample.features.demo.DemoDialogsActivity
 
-import java.util.ArrayList
+import com.stfalcon.chatkit.sample.common.data.fixtures.dialogs
 import kotlinx.android.synthetic.main.activity_default_dialogs.*
 
 class DefaultDialogsActivity : DemoDialogsActivity() {
-
-    private val dialogs: ArrayList<Dialog>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_default_dialogs)
