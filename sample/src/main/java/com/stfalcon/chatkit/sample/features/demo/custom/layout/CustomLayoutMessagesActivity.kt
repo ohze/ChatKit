@@ -11,7 +11,7 @@ import com.stfalcon.chatkit.sample.R
 import com.stfalcon.chatkit.sample.common.data.fixtures.*
 import com.stfalcon.chatkit.sample.common.data.model.Message
 import com.stfalcon.chatkit.sample.features.demo.DemoMessagesActivity
-import com.stfalcon.chatkit.sample.utils.AppUtils
+import com.stfalcon.chatkit.sample.utils.showToast
 import kotlinx.android.synthetic.main.activity_custom_layout_messages.*
 
 class CustomLayoutMessagesActivity : DemoMessagesActivity(),
@@ -38,7 +38,7 @@ class CustomLayoutMessagesActivity : DemoMessagesActivity(),
     }
 
     override fun onMessageLongClick(message: Message) {
-        AppUtils.showToast(this, R.string.on_log_click_message, false)
+        this.showToast(R.string.on_log_click_message, false)
     }
 
     private fun initAdapter() {

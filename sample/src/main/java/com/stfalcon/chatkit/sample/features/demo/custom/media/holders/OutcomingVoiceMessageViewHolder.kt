@@ -18,9 +18,9 @@ class OutcomingVoiceMessageViewHolder(itemView: View) : MessageHolders.Outcoming
     private val tvDuration: TextView = itemView.findViewById(R.id.duration)
     private val tvTime: TextView = itemView.findViewById(R.id.time)
 
-    override fun onBind(message: Message) {
-        super.onBind(message)
-        tvDuration.text = message.voice!!.duration.durationString()
-        tvTime.text = message.createdAt.format(DateFormatter.Template.TIME)
+    override fun onBind(data: Message) {
+        super.onBind(data)
+        tvDuration.text = data.voice!!.duration.durationString()
+        tvTime.text = data.createdAt.format(DateFormatter.Template.TIME)
     }
 }

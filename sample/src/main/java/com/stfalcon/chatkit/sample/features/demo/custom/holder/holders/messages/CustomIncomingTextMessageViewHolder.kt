@@ -10,10 +10,10 @@ class CustomIncomingTextMessageViewHolder(itemView: View) : MessageHolders.Incom
 
     private val onlineIndicator: View = itemView.findViewById(R.id.onlineIndicator)
 
-    override fun onBind(message: Message) {
-        super.onBind(message)
+    override fun onBind(data: Message) {
+        super.onBind(data)
 
-        val isOnline = message.user.isOnline
+        val isOnline = data.user.isOnline
         if (isOnline) {
             onlineIndicator.setBackgroundResource(R.drawable.shape_bubble_online)
         } else {

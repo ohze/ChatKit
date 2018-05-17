@@ -8,7 +8,7 @@ import com.squareup.picasso.Picasso
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter
 import com.stfalcon.chatkit.sample.common.data.model.Dialog
-import com.stfalcon.chatkit.sample.utils.AppUtils
+import com.stfalcon.chatkit.sample.utils.showToast
 
 /*
  * Created by troy379 on 05.04.17.
@@ -25,9 +25,6 @@ abstract class DemoDialogsActivity : AppCompatActivity(),
     }
 
     override fun onDialogLongClick(dialog: Dialog) {
-        AppUtils.showToast(
-                this,
-                dialog.dialogName,
-                false)
+        this.showToast(dialog.dialogName, false)
     }
 }

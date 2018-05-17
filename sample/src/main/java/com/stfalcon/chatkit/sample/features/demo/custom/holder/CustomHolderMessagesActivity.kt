@@ -15,7 +15,7 @@ import com.stfalcon.chatkit.sample.features.demo.custom.holder.holders.messages.
 import com.stfalcon.chatkit.sample.features.demo.custom.holder.holders.messages.CustomIncomingTextMessageViewHolder
 import com.stfalcon.chatkit.sample.features.demo.custom.holder.holders.messages.CustomOutcomingImageMessageViewHolder
 import com.stfalcon.chatkit.sample.features.demo.custom.holder.holders.messages.CustomOutcomingTextMessageViewHolder
-import com.stfalcon.chatkit.sample.utils.AppUtils
+import com.stfalcon.chatkit.sample.utils.showToast
 import kotlinx.android.synthetic.main.activity_custom_holder_messages.*
 
 class CustomHolderMessagesActivity : DemoMessagesActivity(),
@@ -43,7 +43,7 @@ class CustomHolderMessagesActivity : DemoMessagesActivity(),
     }
 
     override fun onMessageLongClick(message: Message) {
-        AppUtils.showToast(this, R.string.on_log_click_message, false)
+        this.showToast(R.string.on_log_click_message, false)
     }
 
     private fun initAdapter() {

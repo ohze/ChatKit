@@ -10,7 +10,7 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 import com.stfalcon.chatkit.sample.R
 import com.stfalcon.chatkit.sample.common.data.fixtures.*
 import com.stfalcon.chatkit.sample.common.data.model.Message
-import com.stfalcon.chatkit.sample.utils.AppUtils
+import com.stfalcon.chatkit.sample.utils.showToast
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -64,7 +64,7 @@ abstract class DemoMessagesActivity : AppCompatActivity(),
             R.id.action_delete -> messagesAdapter.deleteSelectedMessages()
             R.id.action_copy -> {
                 messagesAdapter.copySelectedMessagesText(this, messageStringFormatter, true)
-                AppUtils.showToast(this, R.string.copied_message, true)
+                this.showToast(R.string.copied_message, true)
             }
         }
         return true
