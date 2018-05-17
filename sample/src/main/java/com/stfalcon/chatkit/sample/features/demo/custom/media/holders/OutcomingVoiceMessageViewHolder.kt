@@ -6,7 +6,7 @@ import android.widget.TextView
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.sample.R
 import com.stfalcon.chatkit.sample.common.data.model.Message
-import com.stfalcon.chatkit.sample.utils.FormatUtils
+import com.stfalcon.chatkit.sample.utils.durationString
 import com.stfalcon.chatkit.utils.DateFormatter
 import com.stfalcon.chatkit.utils.*
 
@@ -20,8 +20,7 @@ class OutcomingVoiceMessageViewHolder(itemView: View) : MessageHolders.Outcoming
 
     override fun onBind(message: Message) {
         super.onBind(message)
-        tvDuration.text = FormatUtils.getDurationString(
-                message.voice!!.duration)
+        tvDuration.text = message.voice!!.duration.durationString()
         tvTime.text = message.createdAt.format(DateFormatter.Template.TIME)
     }
 }

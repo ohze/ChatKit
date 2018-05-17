@@ -8,6 +8,7 @@ import android.widget.Toast
  * Created by troy379 on 04.04.17.
  */
 object AppUtils {
+    //TODO ext methods
 
     fun showToast(context: Context, @StringRes text: Int, isLong: Boolean) {
         showToast(context, context.getString(text), isLong)
