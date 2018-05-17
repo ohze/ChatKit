@@ -17,12 +17,11 @@ abstract class DemoDialogsActivity : AppCompatActivity(),
         DialogsListAdapter.OnDialogClickListener<Dialog>,
         DialogsListAdapter.OnDialogLongClickListener<Dialog> {
 
-    protected lateinit var imageLoader: ImageLoader
+    protected val imageLoader: ImageLoader = PicasoImageLoader()
     protected lateinit var dialogsAdapter: DialogsListAdapter<Dialog>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageLoader = PicasoImageLoader()
     }
 
     override fun onDialogLongClick(dialog: Dialog) {
