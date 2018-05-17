@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity
     public void onAction(int id) {
         switch (id) {
             case MainActivityPagerAdapter.ID_DEFAULT:
-                DefaultDialogsActivity.open(this);
+                DefaultDialogsActivity.Companion.open(this);
                 break;
             case MainActivityPagerAdapter.ID_STYLED:
-                StyledDialogsActivity.open(this);
+                StyledDialogsActivity.Companion.open(this);
                 break;
             case MainActivityPagerAdapter.ID_CUSTOM_LAYOUT:
                 CustomLayoutDialogsActivity.open(this);
