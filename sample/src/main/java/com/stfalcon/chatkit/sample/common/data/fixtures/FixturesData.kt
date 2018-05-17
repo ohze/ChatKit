@@ -17,7 +17,8 @@ val avatars = listOf(
 )
 val groupChatImages = listOf(
         "http://i.imgur.com/hRShCT3.png",
-        "http://i.imgur.com/zgTUcL3.png")
+        "http://i.imgur.com/zgTUcL3.png",
+        "http://i.imgur.com/mRqh5w1.png")
 
 val groupChatTitles = listOf(
         "Samuel, Michelle",

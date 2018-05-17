@@ -35,7 +35,7 @@ interface MessageContentType : IMessage {
      * Default media type for image message.
      */
     interface Image : IMessage {
-        val imageUrl: String
+        val imageUrl: String?
     }
 
     // other default types will be here

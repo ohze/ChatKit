@@ -45,7 +45,7 @@ fun getMessages(startDate: Date?): ArrayList<Message> {
             if (startDate != null) calendar.time = startDate
             calendar.add(Calendar.DAY_OF_MONTH, -(it * it + 1))
 
-            message.setCreatedAt(calendar.time)
+            message.createdAt = calendar.time
             messages.add(message)
         }
     }

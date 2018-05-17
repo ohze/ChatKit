@@ -38,7 +38,7 @@ interface IMessage {
      *
      * @return the message text
      */
-    val text: String
+    val text: String?
 
     /**
      * Returns message author. See the [IUser] for more details
