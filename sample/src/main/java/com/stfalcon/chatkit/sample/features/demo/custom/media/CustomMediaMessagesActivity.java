@@ -11,7 +11,7 @@ import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 import com.stfalcon.chatkit.sample.R;
-import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixtures;
+import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixturesKt;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
 import com.stfalcon.chatkit.sample.features.demo.DemoMessagesActivity;
 import com.stfalcon.chatkit.sample.features.demo.custom.media.holders.IncomingVoiceMessageViewHolder;
@@ -47,7 +47,7 @@ public class CustomMediaMessagesActivity extends DemoMessagesActivity
     @Override
     public boolean onSubmit(CharSequence input) {
         super.messagesAdapter.addToStart(
-                MessagesFixtures.getTextMessage(input.toString()), true);
+               MessagesFixturesKt.getTextMessage(input.toString()), true);
         return true;
     }
 
@@ -73,10 +73,10 @@ public class CustomMediaMessagesActivity extends DemoMessagesActivity
     public void onClick(DialogInterface dialogInterface, int i) {
         switch (i) {
             case 0:
-                messagesAdapter.addToStart(MessagesFixtures.getImageMessage(), true);
+                messagesAdapter.addToStart(MessagesFixturesKt.getImageMessage(), true);
                 break;
             case 1:
-                messagesAdapter.addToStart(MessagesFixtures.getVoiceMessage(), true);
+                messagesAdapter.addToStart(MessagesFixturesKt.getVoiceMessage(), true);
                 break;
         }
     }

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.stfalcon.chatkit.dialogs.DialogsList;
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter;
 import com.stfalcon.chatkit.sample.R;
-import com.stfalcon.chatkit.sample.common.data.fixtures.DialogsFixtures;
+import com.stfalcon.chatkit.sample.common.data.fixtures.DialogsFixturesKt;
 import com.stfalcon.chatkit.sample.common.data.model.Dialog;
 import com.stfalcon.chatkit.sample.features.demo.DemoDialogsActivity;
 
@@ -35,7 +35,7 @@ public class CustomLayoutDialogsActivity extends DemoDialogsActivity {
 
     private void initAdapter() {
         super.dialogsAdapter = new DialogsListAdapter<>(R.layout.item_custom_dialog, super.imageLoader);
-        super.dialogsAdapter.setItems(DialogsFixtures.getDialogs());
+        super.dialogsAdapter.setItems(DialogsFixturesKt.getDialogs());
 
         super.dialogsAdapter.setOnDialogClickListener(this);
         super.dialogsAdapter.setOnDialogLongClickListener(this);

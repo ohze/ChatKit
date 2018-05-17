@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.stfalcon.chatkit.dialogs.DialogsList;
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter;
 import com.stfalcon.chatkit.sample.R;
-import com.stfalcon.chatkit.sample.common.data.fixtures.DialogsFixtures;
+import com.stfalcon.chatkit.sample.common.data.fixtures.DialogsFixturesKt;
 import com.stfalcon.chatkit.sample.common.data.model.Dialog;
 import com.stfalcon.chatkit.sample.features.demo.DemoDialogsActivity;
 import com.stfalcon.chatkit.sample.features.demo.custom.holder.holders.dialogs.CustomDialogViewHolder;
@@ -40,7 +40,7 @@ public class CustomHolderDialogsActivity extends DemoDialogsActivity {
                 CustomDialogViewHolder.class,
                 super.imageLoader);
 
-        super.dialogsAdapter.setItems(DialogsFixtures.getDialogs());
+        super.dialogsAdapter.setItems(DialogsFixturesKt.getDialogs());
 
         super.dialogsAdapter.setOnDialogClickListener(this);
         super.dialogsAdapter.setOnDialogLongClickListener(this);

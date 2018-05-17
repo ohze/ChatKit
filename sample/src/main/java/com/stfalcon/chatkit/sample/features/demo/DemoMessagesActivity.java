@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import com.stfalcon.chatkit.commons.ImageLoader;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 import com.stfalcon.chatkit.sample.R;
-import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixtures;
+import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixturesKt;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
 import com.stfalcon.chatkit.sample.utils.AppUtils;
 
@@ -47,7 +47,7 @@ public abstract class DemoMessagesActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        messagesAdapter.addToStart(MessagesFixtures.getTextMessage(), true);
+        messagesAdapter.addToStart(MessagesFixturesKt.getTextMessage(), true);
     }
 
     @Override
@@ -99,7 +99,7 @@ public abstract class DemoMessagesActivity extends AppCompatActivity
         new Handler().postDelayed(new Runnable() { //imitation of internet connection
             @Override
             public void run() {
-                ArrayList<Message> messages = MessagesFixtures.getMessages(lastLoadedDate);
+                ArrayList<Message> messages =MessagesFixturesKt.getMessages(lastLoadedDate);
                 lastLoadedDate = messages.get(messages.size() - 1).getCreatedAt();
                 messagesAdapter.addToEnd(messages, false);
             }

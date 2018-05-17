@@ -9,7 +9,7 @@ import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 import com.stfalcon.chatkit.sample.R;
-import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixtures;
+import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixturesKt;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
 import com.stfalcon.chatkit.sample.features.demo.DemoMessagesActivity;
 import com.stfalcon.chatkit.sample.utils.AppUtils;
@@ -39,14 +39,14 @@ public class DefaultMessagesActivity extends DemoMessagesActivity
     @Override
     public boolean onSubmit(CharSequence input) {
         super.messagesAdapter.addToStart(
-                MessagesFixtures.getTextMessage(input.toString()), true);
+               MessagesFixturesKt.getTextMessage(input.toString()), true);
         return true;
     }
 
     @Override
     public void onAddAttachments() {
         super.messagesAdapter.addToStart(
-                MessagesFixtures.getImageMessage(), true);
+               MessagesFixturesKt.getImageMessage(), true);
     }
 
     private void initAdapter() {
