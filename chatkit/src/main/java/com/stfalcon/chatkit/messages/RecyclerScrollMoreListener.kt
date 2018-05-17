@@ -24,7 +24,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 
-internal class RecyclerScrollMoreListener(layoutManager: LinearLayoutManager, private val loadMoreListener: OnLoadMoreListener?) : RecyclerView.OnScrollListener() {
+class RecyclerScrollMoreListener(
+        layoutManager: LinearLayoutManager,
+        private val loadMoreListener: OnLoadMoreListener?
+) : RecyclerView.OnScrollListener() {
     private var currentPage = 0
     private var previousTotalItemCount = 0
     private var loading = true
@@ -83,7 +86,7 @@ internal class RecyclerScrollMoreListener(layoutManager: LinearLayoutManager, pr
         }
     }
 
-    internal interface OnLoadMoreListener {
+    interface OnLoadMoreListener {
         fun onLoadMore(page: Int, total: Int)
     }
 }

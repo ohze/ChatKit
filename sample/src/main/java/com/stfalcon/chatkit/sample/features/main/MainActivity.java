@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity
                 StyledDialogsActivity.Companion.open(this);
                 break;
             case MainActivityPagerAdapter.ID_CUSTOM_LAYOUT:
-                CustomLayoutDialogsActivity.open(this);
+                CustomLayoutDialogsActivity.Companion.open(this);
                 break;
             case MainActivityPagerAdapter.ID_CUSTOM_VIEW_HOLDER:
-                CustomHolderDialogsActivity.open(this);
+                CustomHolderDialogsActivity.Companion.open(this);
                 break;
             case MainActivityPagerAdapter.ID_CUSTOM_CONTENT:
                 CustomMediaMessagesActivity.open(this);
