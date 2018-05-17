@@ -66,7 +66,7 @@ public abstract class DemoMessagesActivity extends AppCompatActivity
                 break;
             case R.id.action_copy:
                 messagesAdapter.copySelectedMessagesText(this, getMessageStringFormatter(), true);
-                AppUtils.showToast(this, R.string.copied_message, true);
+                AppUtils.INSTANCE.showToast(this, R.string.copied_message, true);
                 break;
         }
         return true;

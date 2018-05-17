@@ -34,7 +34,6 @@ class CustomLayoutDialogsActivity : DemoDialogsActivity() {
     }
 
     companion object {
-
         fun open(context: Context) {
             context.startActivity(Intent(context, CustomLayoutDialogsActivity::class.java))
         }

@@ -29,7 +29,6 @@ class CustomHolderDialogsActivity : DemoDialogsActivity() {
                 R.layout.item_custom_dialog_view_holder,
                 CustomDialogViewHolder::class.java,
                 super.imageLoader)
-
         super.dialogsAdapter.setItems(dialogs)
 
         super.dialogsAdapter.setOnDialogClickListener(this)
@@ -39,7 +38,6 @@ class CustomHolderDialogsActivity : DemoDialogsActivity() {
     }
 
     companion object {
-
         fun open(context: Context) {
             context.startActivity(Intent(context, CustomHolderDialogsActivity::class.java))
         }

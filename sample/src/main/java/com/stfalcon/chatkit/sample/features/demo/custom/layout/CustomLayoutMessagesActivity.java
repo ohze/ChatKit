@@ -52,7 +52,7 @@ public class CustomLayoutMessagesActivity extends DemoMessagesActivity
 
     @Override
     public void onMessageLongClick(Message message) {
-        AppUtils.showToast(this, R.string.on_log_click_message, false);
+        AppUtils.INSTANCE.showToast(this, R.string.on_log_click_message, false);
     }
 
     private void initAdapter() {
