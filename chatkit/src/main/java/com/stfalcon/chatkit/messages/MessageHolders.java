@@ -260,7 +260,8 @@ public class MessageHolders {
      */
     public <TYPE extends MessageContentType>
     MessageHolders registerContentType(
-            byte type, @NonNull Class<? extends BaseMessageViewHolder<TYPE>> holder,
+            byte type,
+            @NonNull Class<? extends BaseMessageViewHolder<TYPE>> holder,
             @LayoutRes int incomingLayout,
             @LayoutRes int outcomingLayout,
             @NonNull ContentChecker contentChecker) {
@@ -285,8 +286,10 @@ public class MessageHolders {
     public <TYPE extends MessageContentType>
     MessageHolders registerContentType(
             byte type,
-            @NonNull Class<? extends BaseMessageViewHolder<TYPE>> incomingHolder, @LayoutRes int incomingLayout,
-            @NonNull Class<? extends BaseMessageViewHolder<TYPE>> outcomingHolder, @LayoutRes int outcomingLayout,
+            @NonNull Class<? extends BaseMessageViewHolder<TYPE>> incomingHolder,
+            @LayoutRes int incomingLayout,
+            @NonNull Class<? extends BaseMessageViewHolder<TYPE>> outcomingHolder,
+            @LayoutRes int outcomingLayout,
             @NonNull ContentChecker contentChecker) {
 
         if (type == 0)
@@ -516,8 +519,8 @@ public class MessageHolders {
 
         public IncomingTextMessageViewHolder(View itemView) {
             super(itemView);
-            bubble = (ViewGroup) itemView.findViewById(R.id.bubble);
-            text = (TextView) itemView.findViewById(R.id.messageText);
+            bubble = itemView.findViewById(R.id.bubble);
+            text = itemView.findViewById(R.id.messageText);
         }
 
         @Override
@@ -565,8 +568,8 @@ public class MessageHolders {
 
         public OutcomingTextMessageViewHolder(View itemView) {
             super(itemView);
-            bubble = (ViewGroup) itemView.findViewById(R.id.bubble);
-            text = (TextView) itemView.findViewById(R.id.messageText);
+            bubble = itemView.findViewById(R.id.bubble);
+            text = itemView.findViewById(R.id.messageText);
         }
 
         @Override
@@ -614,7 +617,7 @@ public class MessageHolders {
 
         public IncomingImageMessageViewHolder(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.image);
+            image = itemView.findViewById(R.id.image);
             imageOverlay = itemView.findViewById(R.id.imageOverlay);
 
             if (image != null && image instanceof RoundedImageView) {
@@ -665,7 +668,7 @@ public class MessageHolders {
 
         public OutcomingImageMessageViewHolder(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.image);
+            image = itemView.findViewById(R.id.image);
             imageOverlay = itemView.findViewById(R.id.imageOverlay);
 
             if (image != null && image instanceof RoundedImageView) {
@@ -717,7 +720,7 @@ public class MessageHolders {
 
         public DefaultDateHeaderViewHolder(View itemView) {
             super(itemView);
-            text = (TextView) itemView.findViewById(R.id.messageText);
+            text = itemView.findViewById(R.id.messageText);
         }
 
         @Override
@@ -754,8 +757,8 @@ public class MessageHolders {
 
         public BaseIncomingMessageViewHolder(View itemView) {
             super(itemView);
-            time = (TextView) itemView.findViewById(R.id.messageTime);
-            userAvatar = (ImageView) itemView.findViewById(R.id.messageUserAvatar);
+            time = itemView.findViewById(R.id.messageTime);
+            userAvatar = itemView.findViewById(R.id.messageUserAvatar);
         }
 
         @Override
@@ -802,7 +805,7 @@ public class MessageHolders {
 
         public BaseOutcomingMessageViewHolder(View itemView) {
             super(itemView);
-            time = (TextView) itemView.findViewById(R.id.messageTime);
+            time = itemView.findViewById(R.id.messageTime);
         }
 
         @Override
@@ -862,14 +865,14 @@ public class MessageHolders {
         }
     }
 
-    private static class ContentTypeConfig<TYPE extends MessageContentType> {
+    private static class ContentTypeConfig<T extends MessageContentType> {
 
         private byte type;
-        private HolderConfig<TYPE> incomingConfig;
-        private HolderConfig<TYPE> outcomingConfig;
+        private HolderConfig<T> incomingConfig;
+        private HolderConfig<T> outcomingConfig;
 
         private ContentTypeConfig(
-                byte type, HolderConfig<TYPE> incomingConfig, HolderConfig<TYPE> outcomingConfig) {
+                byte type, HolderConfig<T> incomingConfig, HolderConfig<T> outcomingConfig) {
 
             this.type = type;
             this.incomingConfig = incomingConfig;
@@ -877,7 +880,7 @@ public class MessageHolders {
         }
     }
 
-    private class HolderConfig<T extends IMessage> {
+    private static class HolderConfig<T extends IMessage> {
 
         protected Class<? extends BaseMessageViewHolder<? extends T>> holder;
         protected int layout;

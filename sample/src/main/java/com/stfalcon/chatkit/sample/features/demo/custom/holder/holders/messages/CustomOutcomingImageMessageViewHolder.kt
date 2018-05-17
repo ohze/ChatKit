@@ -10,9 +10,9 @@ import com.stfalcon.chatkit.sample.common.data.model.Message
  */
 class CustomOutcomingImageMessageViewHolder(itemView: View) : MessageHolders.OutcomingImageMessageViewHolder<Message>(itemView) {
 
-    override fun onBind(message: Message) {
-        super.onBind(message)
+    override fun onBind(data: Message) {
+        super.onBind(data)
 
-        time.text = message.status + " " + time.text
+        time.text = data.status + " " + time.text
     }
 }

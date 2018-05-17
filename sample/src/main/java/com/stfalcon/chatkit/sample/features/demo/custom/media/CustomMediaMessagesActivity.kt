@@ -80,7 +80,7 @@ class CustomMediaMessagesActivity : DemoMessagesActivity(),
 
     companion object {
 
-        private val CONTENT_TYPE_VOICE: Byte = 1
+        private const val CONTENT_TYPE_VOICE: Byte = 1
 
         fun open(context: Context) {
             context.startActivity(Intent(context, CustomMediaMessagesActivity::class.java))
