@@ -34,11 +34,9 @@ class RoundedImageView : AppCompatImageView {
 
     private var mRadii = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
 
-    constructor(context: Context) : super(context) {}
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
-
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {}
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
     override fun drawableStateChanged() {
         super.drawableStateChanged()
@@ -113,12 +111,11 @@ class RoundedImageView : AppCompatImageView {
         private val mBounds = RectF()
 
         private val mBitmapRect = RectF()
-        private val mBitmapWidth: Int
-        private val mBitmapHeight: Int
+        private val mBitmapShader: BitmapShader = BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+        private val mBitmapWidth: Int = mBitmap.getScaledWidth(r.displayMetrics)
+        private val mBitmapHeight: Int = mBitmap.getScaledHeight(r.displayMetrics)
 
-        private val mBitmapPaint: Paint
-
-        private val mBitmapShader: BitmapShader
+        private val mBitmapPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
         private val mRadii = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
 
@@ -126,14 +123,8 @@ class RoundedImageView : AppCompatImageView {
         private var mBoundsConfigured = false
 
         init {
-            mBitmapShader = BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
-
-            mBitmapWidth = mBitmap.getScaledWidth(r.displayMetrics)
-            mBitmapHeight = mBitmap.getScaledHeight(r.displayMetrics)
-
             mBitmapRect.set(0f, 0f, mBitmapWidth.toFloat(), mBitmapHeight.toFloat())
 
-            mBitmapPaint = Paint(Paint.ANTI_ALIAS_FLAG)
             mBitmapPaint.style = Paint.Style.FILL
             mBitmapPaint.shader = mBitmapShader
         }
@@ -251,12 +242,7 @@ class RoundedImageView : AppCompatImageView {
             invalidateSelf()
         }
 
-        override fun getIntrinsicWidth(): Int {
-            return mBitmapWidth
-        }
-
-        override fun getIntrinsicHeight(): Int {
-            return mBitmapHeight
-        }
+        override fun getIntrinsicWidth() = mBitmapWidth
+        override fun getIntrinsicHeight() = mBitmapHeight
     }
 }
