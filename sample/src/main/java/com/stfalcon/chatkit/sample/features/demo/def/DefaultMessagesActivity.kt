@@ -10,8 +10,8 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 import com.stfalcon.chatkit.sample.R
 import com.stfalcon.chatkit.sample.common.data.fixtures.*
 import com.stfalcon.chatkit.sample.features.demo.DemoMessagesActivity
-import com.stfalcon.chatkit.sample.utils.showToast
 import kotlinx.android.synthetic.main.activity_default_messages.*
+import org.jetbrains.anko.toast
 
 class DefaultMessagesActivity : DemoMessagesActivity(),
         MessageInput.InputListener,
@@ -43,7 +43,7 @@ class DefaultMessagesActivity : DemoMessagesActivity(),
         super.messagesAdapter.setLoadMoreListener(this)
         super.messagesAdapter.registerViewClickListener(R.id.messageUserAvatar
         ) { _, message ->
-            this@DefaultMessagesActivity.showToast( message.user.name + " avatar click", false)
+            toast( message.user.name + " avatar click")
         }
         this.messagesList.setAdapter(super.messagesAdapter)
     }

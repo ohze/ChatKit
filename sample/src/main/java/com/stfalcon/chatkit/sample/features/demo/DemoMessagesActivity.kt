@@ -10,7 +10,7 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 import com.stfalcon.chatkit.sample.R
 import com.stfalcon.chatkit.sample.common.data.fixtures.*
 import com.stfalcon.chatkit.sample.common.data.model.Message
-import com.stfalcon.chatkit.sample.utils.showToast
+import org.jetbrains.anko.longToast
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -43,10 +43,6 @@ abstract class DemoMessagesActivity : AppCompatActivity(),
                     message.user.name, text, createdAt)
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onStart() {
         super.onStart()
         messagesAdapter.addToStart(textMessage, true)
@@ -64,7 +60,7 @@ abstract class DemoMessagesActivity : AppCompatActivity(),
             R.id.action_delete -> messagesAdapter.deleteSelectedMessages()
             R.id.action_copy -> {
                 messagesAdapter.copySelectedMessagesText(this, messageStringFormatter, true)
-                this.showToast(R.string.copied_message, true)
+                longToast(R.string.copied_message)
             }
         }
         return true
