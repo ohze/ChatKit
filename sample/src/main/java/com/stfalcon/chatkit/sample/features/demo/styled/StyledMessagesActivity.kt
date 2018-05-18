@@ -38,12 +38,10 @@ class StyledMessagesActivity : DemoMessagesActivity(), MessageInput.InputListene
     }
 
     override fun format(date: Date): String {
-        return if (DateFormatter.isToday(date)) {
-            getString(R.string.date_header_today)
-        } else if (DateFormatter.isYesterday(date)) {
-            getString(R.string.date_header_yesterday)
-        } else {
-            date.format(DateFormatter.Template.STRING_DAY_MONTH_YEAR)
+        return when {
+            date.isToday() -> getString(R.string.date_header_today)
+            date.isYesterday() -> getString(R.string.date_header_yesterday)
+            else -> date.format(DateFormatter.Template.STRING_DAY_MONTH_YEAR)
         }
     }
 

@@ -31,17 +31,11 @@ fun Date?.format(format: String): String =
         else SimpleDateFormat(format, Locale.getDefault())
             .format(this)
 
-// TODO migrate
 class DateFormatter private constructor() {
-    init {
-        throw AssertionError()
-    }
-
     /**
      * Interface used to format dates before they were displayed (e.g. dialogs time, messages date headers etc.).
      */
     interface Formatter {
-
         /**
          * Formats an string representation of the date object.
          *
@@ -51,81 +45,54 @@ class DateFormatter private constructor() {
         fun format(date: Date): String
     }
 
-    enum class Template private constructor(private val template: String) {
+    enum class Template(private val template: String) {
         STRING_DAY_MONTH_YEAR("d MMMM yyyy"),
         STRING_DAY_MONTH("d MMMM"),
         TIME("HH:mm");
 
-        fun get(): String {
-            return template
-        }
-    }
-
-    companion object {
-        fun isSameDay(date1: Date?, date2: Date?): Boolean {
-            if (date1 == null || date2 == null) {
-                throw IllegalArgumentException("Dates must not be null")
-            }
-            val cal1 = Calendar.getInstance()
-            cal1.time = date1
-            val cal2 = Calendar.getInstance()
-            cal2.time = date2
-            return isSameDay(cal1, cal2)
-        }
-
-        fun isSameDay(cal1: Calendar?, cal2: Calendar?): Boolean {
-            if (cal1 == null || cal2 == null) {
-                throw IllegalArgumentException("Dates must not be null")
-            }
-            return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
-                    cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                    cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
-        }
-
-        fun isSameYear(date1: Date?, date2: Date?): Boolean {
-            if (date1 == null || date2 == null) {
-                throw IllegalArgumentException("Dates must not be null")
-            }
-            val cal1 = Calendar.getInstance()
-            cal1.time = date1
-            val cal2 = Calendar.getInstance()
-            cal2.time = date2
-            return isSameYear(cal1, cal2)
-        }
-
-        fun isSameYear(cal1: Calendar?, cal2: Calendar?): Boolean {
-            if (cal1 == null || cal2 == null) {
-                throw IllegalArgumentException("Dates must not be null")
-            }
-            return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) && cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
-        }
-
-        fun isToday(calendar: Calendar): Boolean {
-            return isSameDay(calendar, Calendar.getInstance())
-        }
-
-        fun isToday(date: Date): Boolean {
-            return isSameDay(date, Calendar.getInstance().time)
-        }
-
-        fun isYesterday(calendar: Calendar): Boolean {
-            val yesterday = Calendar.getInstance()
-            yesterday.add(Calendar.DAY_OF_MONTH, -1)
-            return isSameDay(calendar, yesterday)
-        }
-
-        fun isYesterday(date: Date): Boolean {
-            val yesterday = Calendar.getInstance()
-            yesterday.add(Calendar.DAY_OF_MONTH, -1)
-            return isSameDay(date, yesterday.time)
-        }
-
-        fun isCurrentYear(date: Date): Boolean {
-            return isSameYear(date, Calendar.getInstance().time)
-        }
-
-        fun isCurrentYear(calendar: Calendar): Boolean {
-            return isSameYear(calendar, Calendar.getInstance())
-        }
+        fun get(): String = template
     }
 }
+
+fun Date.isSameDay(d: Date): Boolean {
+    val cal1 = Calendar.getInstance()
+    cal1.time = this
+    val cal2 = Calendar.getInstance()
+    cal2.time = d
+    return cal1.isSameDay(cal2)
+}
+
+fun Calendar.isSameDay(c: Calendar): Boolean {
+    return this.get(Calendar.ERA) == c.get(Calendar.ERA) &&
+            this.get(Calendar.YEAR) == c.get(Calendar.YEAR) &&
+            this.get(Calendar.DAY_OF_YEAR) == c.get(Calendar.DAY_OF_YEAR)
+}
+
+fun Calendar.isYesterday(): Boolean {
+    val yesterday = Calendar.getInstance()
+    yesterday.add(Calendar.DAY_OF_MONTH, -1)
+    return this.isSameDay(yesterday)
+}
+
+fun Calendar.isToday(): Boolean = this.isSameDay(Calendar.getInstance())
+fun Date.isToday(): Boolean = this.isSameDay(Calendar.getInstance().time)
+
+fun Date.isYesterday(): Boolean {
+    val yesterday = Calendar.getInstance()
+    yesterday.add(Calendar.DAY_OF_MONTH, -1)
+    return this.isSameDay(yesterday.time)
+}
+
+fun Date.isSameYear(d: Date): Boolean {
+    val cal1 = Calendar.getInstance()
+    cal1.time = this
+    val cal2 = Calendar.getInstance()
+    cal2.time = d
+    return cal1.isSameYear(cal2)
+}
+fun Calendar.isSameYear(c: Calendar): Boolean =
+    this.get(Calendar.ERA) == c.get(Calendar.ERA) &&
+        this.get(Calendar.YEAR) == c.get(Calendar.YEAR)
+
+fun Calendar.isCurrentYear(): Boolean = this.isSameYear(Calendar.getInstance())
+fun Date.isCurrentYear(): Boolean = this.isSameYear(Calendar.getInstance().time)

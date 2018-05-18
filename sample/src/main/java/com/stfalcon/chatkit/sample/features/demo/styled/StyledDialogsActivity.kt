@@ -28,14 +28,11 @@ class StyledDialogsActivity : DemoDialogsActivity(), DateFormatter.Formatter {
     }
 
     override fun format(date: Date): String {
-        return if (DateFormatter.isToday(date)) {
-            date.format(DateFormatter.Template.TIME)
-        } else if (DateFormatter.isYesterday(date)) {
-            getString(R.string.date_header_yesterday)
-        } else if (DateFormatter.isCurrentYear(date)) {
-            date.format(DateFormatter.Template.STRING_DAY_MONTH)
-        } else {
-            date.format(DateFormatter.Template.STRING_DAY_MONTH_YEAR)
+        return when {
+            date.isToday() -> date.format(DateFormatter.Template.TIME)
+            date.isYesterday() -> getString(R.string.date_header_yesterday)
+            date.isCurrentYear() -> date.format(DateFormatter.Template.STRING_DAY_MONTH)
+            else -> date.format(DateFormatter.Template.STRING_DAY_MONTH_YEAR)
         }
     }
 
@@ -51,7 +48,6 @@ class StyledDialogsActivity : DemoDialogsActivity(), DateFormatter.Formatter {
     }
 
     companion object {
-
         fun open(context: Context) {
             context.startActivity(Intent(context, StyledDialogsActivity::class.java))
         }

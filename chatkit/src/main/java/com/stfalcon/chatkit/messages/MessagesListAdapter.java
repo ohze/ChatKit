@@ -163,7 +163,7 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
         if (!items.isEmpty()) {
             int lastItemPosition = items.size() - 1;
             Date lastItem = (Date) items.get(lastItemPosition).item;
-            if (DateFormatter.Companion.isSameDay(messages.get(0).getCreatedAt(), lastItem)) {
+            if (DateFormatterKt.isSameDay(messages.get(0).getCreatedAt(), lastItem)) {
                 items.remove(lastItemPosition);
                 notifyItemRemoved(lastItemPosition);
             }
@@ -450,7 +450,7 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
             this.items.add(new Wrapper<>(message));
             if (messages.size() > i + 1) {
                 MESSAGE nextMessage = messages.get(i + 1);
-                if (!DateFormatter.Companion.isSameDay(message.getCreatedAt(), nextMessage.getCreatedAt())) {
+                if (!DateFormatterKt.isSameDay(message.getCreatedAt(), nextMessage.getCreatedAt())) {
                     this.items.add(new Wrapper<>(message.getCreatedAt()));
                 }
             } else {
@@ -478,7 +478,7 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
         if (items.size() <= position) return false;
         if (items.get(position).item instanceof IMessage) {
             Date previousPositionDate = ((MESSAGE) items.get(position).item).getCreatedAt();
-            return DateFormatter.Companion.isSameDay(dateToCompare, previousPositionDate);
+            return DateFormatterKt.isSameDay(dateToCompare, previousPositionDate);
         } else return false;
     }
 
